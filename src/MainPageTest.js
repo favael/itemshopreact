@@ -5,7 +5,7 @@ import './MainPageTest.css';
 class MainPageTest extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {chessBooks: [], dramatBooks: [], cooksBooks: [], scfiBooks: [], geographyBooks: [], romansBooks: [], historyBooks: [], chosenItem:[] } 
+        this.state = {chessBooks: [], dramatBooks: [], cooksBooks: [], scfiBooks: [], geographyBooks: [], romansBooks: [], historyBooks: [], itemList:[] } 
             
     }
 
@@ -25,14 +25,46 @@ componentDidMount() {
       });
 }
 
-// itemFetch =() => {
-// this.setState(this.chosenItem= this.chessBooks)
-// document.getElementById("result").innerHTML()
-// }
 
 
-renderChoosemList = () => {
-    return  this.state.chosenItem.map((book) => {
+
+chessFetch =() => {
+fetch('https://favael-webshop.herokuapp.com/book/szachy')
+.then(response => response.json())
+.then(response =>this.setState({itemList: response})) 
+}
+
+dramatFetch =() => {
+    fetch('https://favael-webshop.herokuapp.com/book/dramat')
+    .then(response => response.json())
+    .then(response =>this.setState({itemList: response})) 
+}
+
+cookFetch =() => {
+fetch('https://favael-webshop.herokuapp.com/book/gotowanie')
+.then(response => response.json())
+.then(response =>this.setState({itemList: response})) 
+}
+
+romansFetch =() => {
+    fetch('https://favael-webshop.herokuapp.com/book/romans')
+    .then(response => response.json())
+    .then(response =>this.setState({itemList: response})) 
+}
+
+
+historyFetch =() => {
+    fetch('https://favael-webshop.herokuapp.com/book/historia')
+    .then(response => response.json())
+    .then(response =>this.setState({itemList: response})) 
+}
+
+
+
+
+
+renderChoosenList = () => {
+    return  this.state.itemList.map((book) => {
         return <div>
         <img src={book.url} alt={book.title} width = "110" height = "150"></img>
         <p>{book.title}</p>
@@ -41,74 +73,9 @@ renderChoosemList = () => {
       })
   }
 
-  renderChessList = () => {
-    return  this.state.chessBooks.map((book) => {
-        return <div>
-        <img src={book.url} alt={book.title} width = "110" height = "150"></img>
-        <p>{book.title}</p>
-        <p>{book.prize}</p>
-        </div>
-      })
-  }
-  renderDramatList = () => {
-    return  this.state.dramatBooks.map((book) => {
-        return <div>
-        <img src={book.url} alt={book.title} width = "110" height = "150"></img>
-        <p>{book.title}</p>
-        <p>{book.prize}</p>
-        </div>
-      })
-  }
-  renderCookList = () => {
-    return  this.state.cooksBooks.map((book) => {
-        return <div>
-        <img src={book.url} alt={book.title} width = "110" height = "150"></img>
-        <p>{book.title}</p>
-        <p>{book.prize}</p>
-        </div>
-      })
-  }
 
-  renderScfiBooksList = () => {
-    return  this.state.scfiBooks.map((book) => {
-        return <div>
-        <img src={book.url} alt={book.title} width = "110" height = "150"></img>
-        <p>{book.title}</p>
-        <p>{book.prize}</p>
-        </div>
-      })
-  }
 
-  renderGeographyBooksList = () => {
-    return  this.state.geographyBooks.map((book) => {
-        return <div>
-        <img src={book.url} alt={book.title} width = "110" height = "150"></img>
-        <p>{book.title}</p>
-        <p>{book.prize}</p>
-        </div>
-      })
-  }
-
-  renderRomansBooksList = () => {
-    return  this.state.romansBooks.map((book) => {
-        return <div>
-        <img src={book.url} alt={book.title} width = "110" height = "150"></img>
-        <p>{book.title}</p>
-        <p>{book.prize}</p>
-        </div>
-      })
-  }
-
-  renderHistoryBooksList = () => {
-    return  this.state.historyBooks.map((book) => {
-          return <div>
-          <img src={book.url} alt={book.title} width = "110" height = "150"></img>
-          <p>{book.title}</p>
-          <p>{book.prize}</p>
-          </div>
-          
-      })
-  }
+  
  
 
     render() {
@@ -131,32 +98,23 @@ renderChoosemList = () => {
                     {/* <a href="#home">Home</a>
                     <a href="#news">News</a> */}
 
-                    <button class="dropdown" >Szachy</button>
+                    <button class="dropdown" onClick = {this.chessFetch} >Szachy</button>
 
-                    <button class="dropdown">Dramat</button>
+                    <button class="dropdown" onClick = {this.dramatFetch} >Dramat</button>
 
-                    <button class="dropdown">Historia</button>
+                    <button class="dropdown" onClick = {this.historyFetch}>Historia</button>
 
-                    <button class="dropdown">Gotowanie</button>
+                    <button class="dropdown" onClick = {this.cookFetch}>Gotowanie</button>
                             
-                    <button class="dropdown">Romans</button>
+                    <button class="dropdown" onClick = {this.romansFetch}>Romans</button>
 
                     <button class="dropdown">Sci-Fi</button>
 
-                    <button class="dropdown">Dramat </button>
+                    
 
                 </div>
                             <div class = "result"> 
-                            {this.renderChessList()}
-                            {this.renderChessList()}
-                            {this.renderChessList()}
-                            {this.renderChessList()}
-                            {this.renderChessList()}
-                            {this.renderChessList()}
-                            {this.renderChessList()}
-                            {this.renderCookList()}
-                            {this.renderScfiBooksList()}
-                            {this.renderDramatList()}
+                            {this.renderChoosenList()}
                             </div>
                             </div>
         )}
