@@ -28,44 +28,52 @@ componentDidMount() {
 
 
 
+    
+
 chessFetch =() => {
+if (this.chessBooks==null){
 fetch('https://favael-webshop.herokuapp.com/book/szachy')
 .then(response => response.json())
 .then(response =>this.setState({itemList: response})) 
 }
+}
 
 dramatFetch =() => {
+    if (this.dramatBooks==null){
     fetch('https://favael-webshop.herokuapp.com/book/dramat')
     .then(response => response.json())
     .then(response =>this.setState({itemList: response})) 
 }
-
+}
 cookFetch =() => {
+    if (this.cooksBooks==null){
 fetch('https://favael-webshop.herokuapp.com/book/gotowanie')
 .then(response => response.json())
 .then(response =>this.setState({itemList: response})) 
 }
-
+}
 romansFetch =() => {
+    if (this.romansBooks==null){
     fetch('https://favael-webshop.herokuapp.com/book/romans')
     .then(response => response.json())
     .then(response =>this.setState({itemList: response})) 
 }
-
+}
 
 historyFetch =() => {
+    if (this.historyBooks==null){
     fetch('https://favael-webshop.herokuapp.com/book/historia')
     .then(response => response.json())
     .then(response =>this.setState({itemList: response})) 
 }
-
+}
 
 
 
 
 renderChoosenList = () => {
     return  this.state.itemList.map((book) => {
-        return <div>
+        return <div class = "element">
         <img src={book.url} alt={book.title} width = "110" height = "150"></img>
         <p>{book.title}</p>
         <p>{book.prize}</p>
@@ -79,41 +87,42 @@ renderChoosenList = () => {
  
 
     render() {
-        console.log('click',this.state.click)
+        
         return(
             <div id = "page"> 
             
                 <div class = "navbar">
-                        <button class="dropdown">Moje konto</button>
-                        <button class="dropdown">Zaloguj</button>
-                        <button class="dropdown">Mój koszyk</button>
-                <div class = "header-text">
-                    "KUPUJMY KSIĄŻKI!"
-                   
-                    </div>
-                    
+                        <button class="navUpper">Moje konto</button>
+                        <button class="navUpper">Zaloguj</button>
+                        <button class="navUpper">Mój koszyk</button>   
                 </div>
+                <div class = "header-text">
+                    <p>"KUPUJMY KSIĄŻKI!"</p>
+                    </div>
 
                 <div class="navbar">
                     {/* <a href="#home">Home</a>
                     <a href="#news">News</a> */}
 
-                    <button class="dropdown" onClick = {this.chessFetch} >Szachy</button>
+                    <button class="navDown" onClick = {this.chessFetch} >Szachy</button>
 
-                    <button class="dropdown" onClick = {this.dramatFetch} >Dramat</button>
+                    <button class="navDown" onClick = {this.dramatFetch} >Dramat</button>
 
-                    <button class="dropdown" onClick = {this.historyFetch}>Historia</button>
+                    <button class="navDown" onClick = {this.historyFetch}>Historia</button>
 
-                    <button class="dropdown" onClick = {this.cookFetch}>Gotowanie</button>
+                    <button class="navDown" onClick = {this.cookFetch}>Gotowanie</button>
                             
-                    <button class="dropdown" onClick = {this.romansFetch}>Romans</button>
+                    <button class="navDown" onClick = {this.romansFetch}>Romans</button>
 
-                    <button class="dropdown">Sci-Fi</button>
+                    <button class="navDown">Sci-Fi</button>
 
                     
 
                 </div>
                             <div class = "result"> 
+                            {this.renderChoosenList()}
+                            {this.renderChoosenList()}
+                            {this.renderChoosenList()}
                             {this.renderChoosenList()}
                             </div>
                             </div>
