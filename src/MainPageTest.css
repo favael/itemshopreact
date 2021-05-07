@@ -2,16 +2,18 @@
     
     text-align: center;
     background-image: url("header.jpeg");
-    background-repeat: no-repeat;
-    position: relative;
-    width: 85%;
-    height: 610px;
+    background-repeat:no-repeat;
+    -webkit-background-size:cover;
+    -moz-background-size:cover;
+    -o-background-size:cover;
+    background-size:cover;
+    background-position:center;   
     margin-left: auto;
     margin-right: auto;
     color: white;
     font-size: 4vw;
-    height: 500px;
-    width: 1000px;  
+    width: 90vw;
+    height: 30vh;  
 
     
 }

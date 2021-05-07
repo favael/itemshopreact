@@ -97,7 +97,7 @@ renderChoosenList = () => {
                         <button class="navUpper">Mój koszyk</button>   
                 </div>
                 <div class = "header-text">
-                    <p>"KUPUJMY KSIĄŻKI!"</p>
+                    
                     </div>
 
                 <div class="navbar">
