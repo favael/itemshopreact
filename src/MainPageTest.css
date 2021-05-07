@@ -37,34 +37,9 @@
   }
   
   /* Add a red background color to navbar links on hover */
-  .navbar a:hover, .dropdown:hover  {
+  .navbar a:hover, .dropdown:hover, .result div:hover {
     background-color: red;
   }
-  
-  /* Dropdown content (hidden by default) */
-  /* .result {
-    display: none;
-    position:absolute;
-    z-index: 1;
-
-    
-  } */
-  
-  
-  
-  
-  /* Add a grey background color to dropdown links on hover */
-  .dropdown-content a:hover {
-    background-color: #ddd;
-  }
-  
-  /* Show the dropdown menu on hover */
-  .dropdown:hover .result
-  {
-
-    display:flow-root;
-  }
- 
 
 #page 
 {
@@ -76,16 +51,27 @@
   background-color: lightslategrey;
 }
 
+.result div
+{
+  margin-top: 20px;
+  width: 120px;
+  display: inline-block;
+  font-size: 10px;
+  text-align: center;
+  padding: 5;
+  padding-top: 10px;
+ 
+}
 .result
 {
-  width: 80%;
-  height: 50%;
+  width: 75%;
   margin-left: auto;
   margin-right: auto;
-  display: block;
+  margin-bottom: 30px;
+
 }
  
-.buttonBook > button
+.buttonBook > div
 {
   padding-right: 2px;
   padding-bottom: 2px;

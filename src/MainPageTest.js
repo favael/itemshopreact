@@ -5,7 +5,7 @@ import './MainPageTest.css';
 class MainPageTest extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {chessBooks: [], dramatBooks: [], cooksBooks: [], scfiBooks: [], geographyBooks: [], romansBooks: [], historyBooks: [], chosenItem: [] } 
+        this.state = {chessBooks: [], dramatBooks: [], cooksBooks: [], scfiBooks: [], geographyBooks: [], romansBooks: [], historyBooks: [], chosenItem:[] } 
             
     }
 
@@ -18,78 +18,94 @@ componentDidMount() {
          return Promise.all([res1.json(), res2.json(), res3.json(), res4.json(), res5.json(), res6.json(), res7.json()]) 
       })
       .then(([res1, res2, res3, res4, res5, res6, res7 ]) => {
-        this.setState({chessBooks: res1, dramatBooks: res2, cooksBooks: res3, scfiBooks: res4, geographyBooks: res5, romansBooks: res6, historyBooks: res7})
+        this.setState({chessBooks: res1, dramatBooks: res2, cooksBooks: res3, scfiBooks: res4, geographyBooks: res5, romansBooks: res6, historyBooks: res7
+        
+        })
+
       });
 }
 
+// itemFetch =() => {
+// this.setState(this.chosenItem= this.chessBooks)
+// document.getElementById("result").innerHTML()
+// }
 
 
+renderChoosemList = () => {
+    return  this.state.chosenItem.map((book) => {
+        return <div>
+        <img src={book.url} alt={book.title} width = "110" height = "150"></img>
+        <p>{book.title}</p>
+        <p>{book.prize}</p>
+        </div>
+      })
+  }
 
   renderChessList = () => {
     return  this.state.chessBooks.map((book) => {
-          return <button class = "buttonBook" >
-          <img src={book.url} alt={book.title} width = "110" height = "150"></img>
-          <p>{book.title}</p>
-          <p>{book.prize}</p>
-          </button>
+        return <div>
+        <img src={book.url} alt={book.title} width = "110" height = "150"></img>
+        <p>{book.title}</p>
+        <p>{book.prize}</p>
+        </div>
       })
   }
   renderDramatList = () => {
     return  this.state.dramatBooks.map((book) => {
-          return <button class = "buttonBook">
-          <img src={book.url} alt={book.title} width = "110" height = "150"></img>
-          <p>{book.title}</p>
-          <p>{book.prize}</p>
-          </button>
+        return <div>
+        <img src={book.url} alt={book.title} width = "110" height = "150"></img>
+        <p>{book.title}</p>
+        <p>{book.prize}</p>
+        </div>
       })
   }
   renderCookList = () => {
     return  this.state.cooksBooks.map((book) => {
-          return <button class = "buttonBook">
-          <img src={book.url} alt={book.title} width = "110" height = "150"></img>
-          <p>{book.title}</p>
-          <p>{book.prize}</p>
-          </button>
+        return <div>
+        <img src={book.url} alt={book.title} width = "110" height = "150"></img>
+        <p>{book.title}</p>
+        <p>{book.prize}</p>
+        </div>
       })
   }
 
   renderScfiBooksList = () => {
     return  this.state.scfiBooks.map((book) => {
-          return <button class = "buttonBook">
-          <img src={book.url} alt={book.title} width = "110" height = "150"></img>
-          <p>{book.title}</p>
-          <p>{book.prize}</p>
-          </button>
+        return <div>
+        <img src={book.url} alt={book.title} width = "110" height = "150"></img>
+        <p>{book.title}</p>
+        <p>{book.prize}</p>
+        </div>
       })
   }
 
   renderGeographyBooksList = () => {
     return  this.state.geographyBooks.map((book) => {
-          return <button class = "buttonBook">
-          <img src={book.url} alt={book.title} width = "110" height = "150"></img>
-          <p>{book.title}</p>
-          <p>{book.prize}</p>
-          </button>
+        return <div>
+        <img src={book.url} alt={book.title} width = "110" height = "150"></img>
+        <p>{book.title}</p>
+        <p>{book.prize}</p>
+        </div>
       })
   }
 
   renderRomansBooksList = () => {
     return  this.state.romansBooks.map((book) => {
-          return <button class = "buttonBook">
-          <img src={book.url} alt={book.title} width = "110" height = "150"></img>
-          <p>{book.title}</p>
-          <p>{book.prize}</p>
-          </button>
+        return <div>
+        <img src={book.url} alt={book.title} width = "110" height = "150"></img>
+        <p>{book.title}</p>
+        <p>{book.prize}</p>
+        </div>
       })
   }
 
   renderHistoryBooksList = () => {
     return  this.state.historyBooks.map((book) => {
-          return <button class = "buttonBook">
+          return <div>
           <img src={book.url} alt={book.title} width = "110" height = "150"></img>
           <p>{book.title}</p>
           <p>{book.prize}</p>
-          </button>
+          </div>
           
       })
   }
@@ -101,11 +117,10 @@ componentDidMount() {
             <div id = "page"> 
             
                 <div class = "navbar">
-                        <div class="dropdown">Moje konto</div>
-                        <div class="dropdown">Zaloguj</div>
-                        <div class="dropdown">Mój koszyk</div>
-                   
-                    <div class = "header-text">
+                        <button class="dropdown">Moje konto</button>
+                        <button class="dropdown">Zaloguj</button>
+                        <button class="dropdown">Mój koszyk</button>
+                <div class = "header-text">
                     "KUPUJMY KSIĄŻKI!"
                    
                     </div>
@@ -116,29 +131,32 @@ componentDidMount() {
                     {/* <a href="#home">Home</a>
                     <a href="#news">News</a> */}
 
-                    <div class="dropdown">Szachy</div>
+                    <button class="dropdown" >Szachy</button>
 
-                    <div class="dropdown">Dramat</div>
+                    <button class="dropdown">Dramat</button>
 
-                    <div class="dropdown">Historia</div>
+                    <button class="dropdown">Historia</button>
 
-                    <div class="dropdown">Gotowanie</div>
+                    <button class="dropdown">Gotowanie</button>
                             
-                    <div class="dropdown">Romans</div>
+                    <button class="dropdown">Romans</button>
 
-                    <div class="dropdown">Sci-Fi</div>
+                    <button class="dropdown">Sci-Fi</button>
 
-                    <div class="dropdown">Dramat </div>
+                    <button class="dropdown">Dramat </button>
 
                 </div>
                             <div class = "result"> 
-                            {this.renderChessList()}   
-                            {this.renderDramatList()}  
-                            {this.renderHistoryBooksList()} 
-                            {this.renderCookList()} 
-                            {this.renderRomansBooksList()} 
-                            {this.renderScfiBooksList()} 
-                            {this.renderGeographyBooksList()} 
+                            {this.renderChessList()}
+                            {this.renderChessList()}
+                            {this.renderChessList()}
+                            {this.renderChessList()}
+                            {this.renderChessList()}
+                            {this.renderChessList()}
+                            {this.renderChessList()}
+                            {this.renderCookList()}
+                            {this.renderScfiBooksList()}
+                            {this.renderDramatList()}
                             </div>
                             </div>
         )}
