@@ -122,8 +122,6 @@ class MainPageTest extends React.Component {
         <div className="container">
             <Row>
             {this.renderItemList()}
-
-            
             </Row>
         </div>
         </section>
