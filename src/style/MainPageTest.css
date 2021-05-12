@@ -49,7 +49,7 @@ header
     margin: 0; /* Important for vertical align on mobile phones */
   }
 
-  .navbar a:hover, .navUpper:hover, .navDown:hover, .container figure:hover{
+  .navbar a:hover, .navUpper:hover, .navDown:hover{
     background-color: red;
    
   }
@@ -71,27 +71,32 @@ h1
 
 }
 
-.container-fuild
+.container
 {
 	display: block;
 	margin-top: 20px;
-
+  height: 100%;
+  margin-bottom: 0;
+ 
 }
 
-.container-fuild img
+
+
+.container img
 {
 	width: 100%;
-  	height:auto;
+  height:auto;
 	
 }
 
-.container-fuild figure{
-	padding-top: 15px;
+.container figure{
+	
 }
 
-.container-fuild figcaption
+.container figcaption
 {
 	text-align: center;
 	color: #efefef;
+  font-size: small;
 }
 
