@@ -7,8 +7,7 @@ import { Row } from 'react-bootstrap';
 class MainPageTest extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { chessBooks: [], dramatBooks: [], cooksBooks: [], scfiBooks: [], geographyBooks: [], romansBooks: [], historyBooks: [] }
-
+    this.state = { chessBooks: [], dramatBooks: [], cooksBooks: [], scfiBooks: [], geographyBooks: [], romansBooks: [], historyBooks: [], itemList: [] }
   }
 
 
@@ -28,79 +27,52 @@ class MainPageTest extends React.Component {
       });
   }
 
-
-
-
-
-
-  renderChessList = () => {
-    return this.state.chessBooks.map((book) => {
-      return <figure className="col-3 col-sm-2 " key={book.isbn}>
-
-        <img src={book.url} alt={book.title}></img>
-        <figcaption>{book.title}</figcaption>
-
-      </figure>
-    })
+  chessFetch = () => {
+    fetch('https://favael-webshop.herokuapp.com/book/szachy')
+    .then(response => response.json())
+    .then(bookResponse =>
+      this.setState({itemList: bookResponse}))
   }
 
-  renderDramatList = () => {
-    return this.state.dramatBooks.map((book) => {
-      return <figure className="col-3 col-sm-2 " key={book.isbn}>
-
-        <img src={book.url} alt={book.title}></img>
-        <figcaption>{book.title}</figcaption>
-
-      </figure>
-    })
+  dramatFetch = () => {
+    fetch('https://favael-webshop.herokuapp.com/book/dramat')
+    .then(response => response.json())
+    .then(dramatResponse =>
+      this.setState({itemList: dramatResponse}))
   }
 
-  renderCookList = () => {
-    return this.state.cooksBooks.map((book) => {
-      return <figure className="col-3 col-sm-2 " key={book.isbn}>
-
-        <img src={book.url} alt={book.title}></img>
-        <figcaption>{book.title}</figcaption>
-
-      </figure>
-    })
+  historyFetch = () => {
+    fetch('https://favael-webshop.herokuapp.com/book/historia')
+    .then(response => response.json())
+    .then(hitoryResponse =>
+      this.setState({itemList: hitoryResponse}))
   }
 
-  renderScfiList = () => {
-    return this.state.scfiBooks.map((book) => {
-      return <figure className="col-3 col-sm-2 " key={book.isbn}>
-
-        <img src={book.url} alt={book.title}></img>
-        <figcaption>{book.title}</figcaption>
-
-      </figure>
-    })
+  cookFetch = () => {
+    fetch('https://favael-webshop.herokuapp.com/book/gotowanie')
+    .then(response => response.json())
+    .then(cookResponse =>
+      this.setState({itemList: cookResponse}))
   }
 
-  renderGeographyList = () => {
-    return this.state.geographyBooks.map((book) => {
-      return <figure className="col-3 col-sm-2 " key={book.isbn}>
-
-        <img src={book.url} alt={book.title}></img>
-        <figcaption>{book.title}</figcaption>
-
-      </figure>
-    })
+  romansFetch = () => {
+    fetch('https://favael-webshop.herokuapp.com/book/romans')
+    .then(response => response.json())
+    .then(romansResponse =>
+      this.setState({itemList: romansResponse}))
   }
 
-  renderRomansList = () => {
-    return this.state.romansBooks.map((book) => {
-      return <figure className="col-3 col-sm-2 " key={book.isbn}>
-
-        <img src={book.url} alt={book.title}></img>
-        <figcaption>{book.title}</figcaption>
-
-      </figure>
-    })
+  scfiFetch = () => {
+    fetch('https://favael-webshop.herokuapp.com/book/scfi')
+    .then(response => response.json())
+    .then(scfiResponse =>
+      this.setState({itemList: scfiResponse}))
   }
 
-  renderHistoryList = () => {
-    return this.state.historyBooks.map((book) => {
+
+
+  renderItemList = () => {
+    return this.state.itemList.map((book) => {
       return <figure className="col-3 col-sm-2 " key={book.isbn}>
 
         <img src={book.url} alt={book.title}></img>
@@ -141,7 +113,7 @@ class MainPageTest extends React.Component {
 
             <button className="navDown" onClick={this.romansFetch}>Romans</button>
 
-            <button className="navDown" onClick={this.historyFetch}>Sci-Fi</button>
+            <button className="navDown" onClick={this.scfiFetch}>Sci-Fi</button>
 
 
         </nav>
@@ -149,18 +121,8 @@ class MainPageTest extends React.Component {
           
         <div className="container">
             <Row>
-            {this.renderChessList()}
-            {this.renderDramatList()}
-            {this.renderCookList()}
-            {this.renderHistoryList()}
-            {this.renderGeographyList()}
-            {this.renderScfiList()}
-            {this.renderRomansList()}
-            {this.renderChessList()}
-            {this.renderChessList()}
-            {this.renderChessList()}
-            {this.renderChessList()}
-            {this.renderChessList()}
+            {this.renderItemList()}
+
             
             </Row>
         </div>
