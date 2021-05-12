@@ -35,7 +35,7 @@ class MainPageTest extends React.Component {
 
   renderChessList = () => {
     return this.state.chessBooks.map((book) => {
-      return <figure className="col-sm-3" key={book.isbn}>
+      return <figure className="col-3 col-sm-2 col-md-1" key={book.isbn}>
 
         <img src={book.url} alt={book.title}></img>
         <figcaption>{book.title}</figcaption>
@@ -46,7 +46,7 @@ class MainPageTest extends React.Component {
 
   renderDramatList = () => {
     return this.state.dramatBooks.map((book) => {
-      return <figure className="col-sm-3" key={book.isbn}>
+      return <figure className="col-3 col-sm-2 col-md-1" key={book.isbn}>
 
         <img src={book.url} alt={book.title}></img>
         <figcaption>{book.title}</figcaption>
@@ -57,7 +57,7 @@ class MainPageTest extends React.Component {
 
   renderCookList = () => {
     return this.state.cooksBooks.map((book) => {
-      return <figure className="col-sm-3" key={book.isbn}>
+      return <figure className="col-3 col-sm-2 col-md-1" key={book.isbn}>
 
         <img src={book.url} alt={book.title}></img>
         <figcaption>{book.title}</figcaption>
@@ -68,7 +68,7 @@ class MainPageTest extends React.Component {
 
   renderScfiList = () => {
     return this.state.scfiBooks.map((book) => {
-      return <figure className="col-sm-3" key={book.isbn}>
+      return <figure className="col-3 col-sm-2 col-md-1" key={book.isbn}>
 
         <img src={book.url} alt={book.title}></img>
         <figcaption>{book.title}</figcaption>
@@ -79,7 +79,7 @@ class MainPageTest extends React.Component {
 
   renderGeographyList = () => {
     return this.state.geographyBooks.map((book) => {
-      return <figure className="col-sm-3" key={book.isbn}>
+      return <figure className="col-3 col-sm-2 col-md-1" key={book.isbn}>
 
         <img src={book.url} alt={book.title}></img>
         <figcaption>{book.title}</figcaption>
@@ -90,7 +90,7 @@ class MainPageTest extends React.Component {
 
   renderRomansList = () => {
     return this.state.romansBooks.map((book) => {
-      return <figure className="col-sm-3" key={book.isbn}>
+      return <figure className="col-3 col-sm-2 col-md-1" key={book.isbn}>
 
         <img src={book.url} alt={book.title}></img>
         <figcaption>{book.title}</figcaption>
@@ -101,7 +101,7 @@ class MainPageTest extends React.Component {
 
   renderHistoryList = () => {
     return this.state.historyBooks.map((book) => {
-      return <figure className="col-sm-3" key={book.isbn}>
+      return <figure className="col-3 col-sm-2 col-md-1" key={book.isbn}>
 
         <img src={book.url} alt={book.title}></img>
         <figcaption>{book.title}</figcaption>
@@ -146,7 +146,7 @@ class MainPageTest extends React.Component {
 
         </nav>
         <section>
-        <div className="container">
+        <div className="container-fluid">
             <Row>
             {this.renderChessList()}
             {this.renderDramatList()}
