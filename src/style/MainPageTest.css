@@ -49,6 +49,10 @@ header
     margin: 0; /* Important for vertical align on mobile phones */
   }
 
+  .navbar a:hover, .navUpper:hover, .navDown:hover, .container figure:hover{
+    background-color: red;
+   
+  }
 
 
 
@@ -79,6 +83,10 @@ h1
 	width: 100%;
   	height:auto;
 	
+}
+
+.container figure{
+	padding-top: 15px;
 }
 
 .container figcaption
