@@ -2,17 +2,22 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './style/reset.css';
 import './style/index.css';
-import MainPageTest from './MainPageTest' 
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import MainPageTest from "./MainPageTest"
+import ItemDetails from './ItemDetails';
+import {BrowserRouter, Route} from 'react-router-dom'
 
-
+   
 
 
 ReactDOM.render(
-  <React.StrictMode>
-    <MainPageTest/>
-  </React.StrictMode>,
+  <BrowserRouter>
+  <div>
+    <Route exact path ='/' component = {MainPageTest}/>
+    <Route path ='/book/:isbn' component = {ItemDetails}/>
+  </div>
+  </BrowserRouter>,
   document.getElementById('root')
 );
 

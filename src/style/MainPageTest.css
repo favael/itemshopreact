@@ -1,9 +1,9 @@
 #id
 {
-	background-color: #2F3336;
-	color: #efefef;
+	  background-color: #2F3336;
     font-family: 'Open Sans', sans-serif;
     font-size: 17px;
+    margin: 0;
 }
 header
 {
@@ -18,8 +18,8 @@ header
     margin-left: auto;
     margin-right: auto;
     color: white;
-	width: auto;
-	height: 200px;
+	  width: auto;
+  	height: 200px;
 }
 .navbar 
 {
@@ -105,3 +105,15 @@ section{
   font-size: 2vw;
 }
 
+.container figure:hover 
+{
+  cursor: pointer;
+}
+
+.details img 
+{
+  width: 100px;
+  height: auto;
+  float: left;
+  margin-right: 20px;
+}

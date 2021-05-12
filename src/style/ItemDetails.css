@@ -1,0 +1,28 @@
+
+.details img
+{
+    width: 300px;
+    height: auto;
+}
+
+.details
+{
+    
+  margin: 0;
+  background-color:#595959;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.description
+{
+    font-size: 30px;
+}
+
+
+
+h1
+{
+margin-top: 0;
+text-align: center;
+}

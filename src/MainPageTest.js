@@ -2,14 +2,18 @@ import React from 'react';
 import './style/reset.css';
 import './style/MainPageTest.css';
 import { Row } from 'react-bootstrap';
+import {withRouter} from 'react-router-dom';
+
 
 
 class MainPageTest extends React.Component {
+
   constructor(props) {
     super(props);
-    this.state = { chessBooks: [], dramatBooks: [], cooksBooks: [], scfiBooks: [], geographyBooks: [], romansBooks: [], historyBooks: [], itemList: [] }
-  }
+    this.state = { itemList: []}
+}
 
+ 
 
   componentDidMount() {
     Promise.all([fetch('https://favael-webshop.herokuapp.com/book/szachy'), fetch('https://favael-webshop.herokuapp.com/book/dramat'), fetch('https://favael-webshop.herokuapp.com/book/gotowanie'), fetch('https://favael-webshop.herokuapp.com/book/scfi'), fetch('https://favael-webshop.herokuapp.com/book/geografia'), fetch('https://favael-webshop.herokuapp.com/book/romans'), fetch('https://favael-webshop.herokuapp.com/book/historia')])
@@ -26,6 +30,8 @@ class MainPageTest extends React.Component {
 
       });
   }
+
+
 
   chessFetch = () => {
     fetch('https://favael-webshop.herokuapp.com/book/szachy')
@@ -69,18 +75,25 @@ class MainPageTest extends React.Component {
       this.setState({itemList: scfiResponse}))
   }
 
-
+  onItemClick = (isbn) => {
+    this.props.history.push({pathname: `/book/${isbn}`});
+  }
 
   renderItemList = () => {
     return this.state.itemList.map((book) => {
-      return <figure className="col-3 col-sm-2 " key={book.isbn}>
-
-        <img src={book.url} alt={book.title}></img>
-        <figcaption>{book.title}</figcaption>
-
+      const {url, title, isbn} = book;
+      const itemClick = this.onItemClick.bind(this, isbn)
+      return <figure className="col-3 col-sm-2" onClick = {itemClick} key={isbn}>
+        <img src={url} alt={title}></img>
+        <figcaption>{title}</figcaption>
+  
       </figure>
     })
   }
+
+   
+  
+ 
 
 
 
@@ -120,9 +133,9 @@ class MainPageTest extends React.Component {
         <section>
           
         <div className="container">
-            <Row>
-            {this.renderItemList()}
-            </Row>
+        <Row>{this.renderItemList()}</Row>
+
+          
         </div>
         </section>
         <footer>
@@ -134,4 +147,4 @@ class MainPageTest extends React.Component {
   }
 }
 
-export default MainPageTest;
+export default withRouter(MainPageTest);
