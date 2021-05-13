@@ -1,13 +1,17 @@
 
 .details img
 {
-    width: 300px;
-    height: auto;
+    width: 200px;
+    height: 300px;
+    margin-right: 100px;
+    display: block;
+    float: right;
 }
 
 .details
 {
-    
+  width: 1000px;
+  height: 100%;
   margin: 0;
   background-color:#595959;
   margin-left: auto;
@@ -17,6 +21,9 @@
 .description
 {
     font-size: 30px;
+    display: block;
+    float: left;
+    text-align: justify;
 }
 
 
@@ -24,5 +31,18 @@
 h1
 {
 margin-top: 0;
-text-align: center;
+
+}
+
+.details-content
+{
+  display: inline-block;
+  margin-top: 50px;
+}
+
+.description-details
+{
+
+  display: block;
+  float: left;
 }

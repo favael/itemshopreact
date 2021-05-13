@@ -21,13 +21,20 @@ class ItemDetails extends React.Component {
 
 
     renderItemDetails = () => {
-        const {url, title, description} = this.state.itemDetails;
+        const {url, title, description, author, quantity, prize} = this.state.itemDetails;
         return (
             <div className = "details-content">
-                <h1>{title}</h1>
+                <div className ="description-details">
+                    <h1>Tytuł: {title}</h1>
+                    <h2>Autor: {author}</h2>
+                    <h3>Ilość: {quantity} szt.</h3>
+                    <h3>Cena: {prize} zł</h3>
+                    <button>Dodaj do koszyka</button>
+                </div>
+
                 <img src = {"/" + url} alt={title}></img>
-                
-                
+
+    
                 <div className = "description">{description}</div>
                 </div>
            
