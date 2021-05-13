@@ -26,9 +26,9 @@ class ItemDetails extends React.Component {
             <div className = "details-content">
                 <div className ="description-details">
                     <h1>Tytuł: {title}</h1>
-                    <h2>Autor: {author}</h2>
-                    <h3>Ilość: {quantity} szt.</h3>
-                    <h3>Cena: {prize} zł</h3>
+                    <p>Autor: {author}</p>
+                    <p>Ilość: {quantity} szt.</p>
+                    <p>Cena: {prize} zł</p>
                     <button>Dodaj do koszyka</button>
                 </div>
 
