@@ -12,10 +12,9 @@
 {
   width: 1000px;
   height: 100%;
-  margin: 0;
-  background-color:#595959;
   margin-left: auto;
   margin-right: auto;
+  background-size: cover;
 }
 
 .description
@@ -34,15 +33,25 @@ margin-top: 0;
 
 }
 
-.details-content
+.details-content 
 {
   display: inline-block;
   margin-top: 50px;
+  background-color: darkgray;
+  height: 100%;
+  
+
 }
 
 .description-details
 {
-
+  
   display: block;
   float: left;
 }
+
+ /* Specific to this particular image */
+  img.bg {
+    left: 50%;
+    margin-left: -512px;   /* 50% */
+  }
