@@ -14,11 +14,11 @@ import AddItem from './AddItem';
 
 ReactDOM.render(
   <BrowserRouter>
-  <div>
-    <AddItem/>
-    {/* <Route exact path ='/' component = {MainPageTest}/>
-    <Route path ='/book/:isbn' component = {ItemDetails}/> */}
-  </div>
+
+
+    <Route exact path ='/' component = {MainPageTest}/>
+    <Route path ='/book/:isbn' component = {ItemDetails}/>
+  
   </BrowserRouter>,
   document.getElementById('root')
 );
