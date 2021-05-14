@@ -55,7 +55,7 @@ class ItemDetails extends React.Component {
                     <p>Autor: {author}</p>
                     <p>Ilość: {quantity} szt.</p>
                     <p>Cena: {prize} zł</p>
-                    <button onClick={his.onClickBuyItem.bind(this)} >Dodaj do koszyka</button>
+                    <button onClick={this.onClickBuyItem.bind(this)} >Dodaj do koszyka</button>
                 </div>
 
                 <img src = {"/" + url} alt={title}></img>
