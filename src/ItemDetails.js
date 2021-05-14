@@ -47,7 +47,7 @@ class ItemDetails extends React.Component {
 
     renderItemDetails = () => {
         const {url, title, description, author, quantity, prize} = this.state.itemDetails;
-        const buyItem = this.onClickBuyItem.bind()
+
         return (
             <div className = "details-content">
                 <div className ="description-details">
@@ -55,7 +55,7 @@ class ItemDetails extends React.Component {
                     <p>Autor: {author}</p>
                     <p>Ilość: {quantity} szt.</p>
                     <p>Cena: {prize} zł</p>
-                    <button onClick={buyItem} >Dodaj do koszyka</button>
+                    <button onClick={his.onClickBuyItem.bind(this)} >Dodaj do koszyka</button>
                 </div>
 
                 <img src = {"/" + url} alt={title}></img>
