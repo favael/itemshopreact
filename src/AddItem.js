@@ -19,13 +19,13 @@ class AddItem extends React.Component {
     }
 
     componentDidMount() {
-const requestOptions = {
+    const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ author:"Kowalski Jan", booksCategory:"Dramat", description:"Long long long", prize:1.99, quantity:2, title: "Dino", url: "Dino.jpeg"})
+        body: JSON.stringify({ author:"Kowalski Jan, sdfdsf", booksCategory:"Dramat", description:"Long long long", prize:1.99, quantity:2, title: "Dino", url: "Dino.jpeg"})
     };
 
-        fetch(`https://favael-webshop.herokuapp.com/book`, requestOptions)
+        fetch(`https://favael-webshop.herokuapp.com/soldBook/shoppingCardList`, requestOptions)
         .then(response => response.json()
         .then(jsonResponse => {
             this.setState({

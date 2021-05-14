@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import MainPageTest from "./MainPageTest"
 import ItemDetails from './ItemDetails';
 import {BrowserRouter, Route} from 'react-router-dom'
+import AddItem from './AddItem';
 
    
 
@@ -14,8 +15,9 @@ import {BrowserRouter, Route} from 'react-router-dom'
 ReactDOM.render(
   <BrowserRouter>
   <div>
-    <Route exact path ='/' component = {MainPageTest}/>
-    <Route path ='/book/:isbn' component = {ItemDetails}/>
+    <AddItem/>
+    {/* <Route exact path ='/' component = {MainPageTest}/>
+    <Route path ='/book/:isbn' component = {ItemDetails}/> */}
   </div>
   </BrowserRouter>,
   document.getElementById('root')

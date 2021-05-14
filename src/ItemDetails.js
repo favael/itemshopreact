@@ -17,6 +17,8 @@ class ItemDetails extends React.Component {
             this.setState({itemDetails: jsonResponse})
         })
         )
+
+        
     }
 
     onItemClick = (isbn) => {
