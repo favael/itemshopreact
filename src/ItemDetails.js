@@ -47,7 +47,7 @@ class ItemDetails extends React.Component {
 
     renderItemDetails = () => {
         const {url, title, description, author, quantity, prize} = this.state.itemDetails;
-        const buyItem = this.onClickBuyItem.bind(this)
+        const buyItem = this.onClickBuyItem.bind()
         return (
             <div className = "details-content">
                 <div className ="description-details">
