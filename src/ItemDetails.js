@@ -30,17 +30,19 @@ class ItemDetails extends React.Component {
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ author: {author}, booksCategory:{booksCategory}, description: {description}, prize:{prize}, quantity:{quantity}, title: {title}, url: {url}})
+            body: JSON.stringify({
+                "title": title,
+                "booksCategory": booksCategory,
+                "description": description,
+                "author": author,
+                "quantity": quantity,
+                "prize": prize,
+                "url": url
+              })
         };
     
             fetch(`https://favael-webshop.herokuapp.com/soldBook/shoppingCardList`, requestOptions)
-            .then(response => response.json()
-            .then(jsonResponse => {
-                this.setState({
-                    itemDetails: jsonResponse
-                })
-            })
-            )
+            
         }
     
 

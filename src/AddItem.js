@@ -6,23 +6,23 @@ import './style/AddItem.css';
 class AddItem extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            author: "",
-            booksCategory: "",
-            description: "",
-            prize: null,
-            quantity: null,
-            title: "",
-            url: ""
-    
+        this.state = {itemDetails: []
     }
     }
 
     componentDidMount() {
+        fetch(`https://favael-webshop.herokuapp.com/book/szachy`)
+        .then(response => response.json()
+        .then(jsonResponse => {
+            this.setState({itemDetails: jsonResponse})
+        })
+        )
+
+        const {url, title, description, author, quantity, prize, booksCategory} = this.state.itemDetails;
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ author:"Kowalski Jan, sdfdsf", booksCategory:"Dramat", description:"Long long long", prize:1.99, quantity:2, title: "Dino", url: "Dino.jpeg"})
+        body: JSON.stringify({ author: {author}, booksCategory: {booksCategory}, description:{description}, prize:{}, quantity:{quantity}, title: {title}, url: {url}})
     };
 
         fetch(`https://favael-webshop.herokuapp.com/soldBook/shoppingCardList`, requestOptions)
