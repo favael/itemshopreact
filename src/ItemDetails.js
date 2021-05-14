@@ -19,9 +19,33 @@ class ItemDetails extends React.Component {
         )
     }
 
+    onItemClick = (isbn) => {
+        this.props.history.push({pathname: `/book/${isbn}`});
+      }
+
+    onClickBuyItem = () => {
+        const {url, title, description, author, quantity, prize, booksCategory} = this.state.itemDetails;
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ author: {author}, booksCategory:{booksCategory}, description: {description}, prize:{prize}, quantity:{quantity}, title: {title}, url: {url}})
+        };
+    
+            fetch(`https://favael-webshop.herokuapp.com/soldBook/shoppingCardList`, requestOptions)
+            .then(response => response.json()
+            .then(jsonResponse => {
+                this.setState({
+                    itemDetails: jsonResponse
+                })
+            })
+            )
+        }
+    
+
 
     renderItemDetails = () => {
         const {url, title, description, author, quantity, prize} = this.state.itemDetails;
+        const buyItem = this.onClickBuyItem(this)
         return (
             <div className = "details-content">
                 <div className ="description-details">
@@ -29,7 +53,7 @@ class ItemDetails extends React.Component {
                     <p>Autor: {author}</p>
                     <p>Ilość: {quantity} szt.</p>
                     <p>Cena: {prize} zł</p>
-                    <button>Dodaj do koszyka</button>
+                    <button onClick={buyItem} >Dodaj do koszyka</button>
                 </div>
 
                 <img src = {"/" + url} alt={title}></img>
