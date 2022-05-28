@@ -71,13 +71,7 @@ class ItemDetails extends React.Component {
 
     render() {
         return (
-            <div className = "details">
-                 <nav className="navbar">
-                        <button className="navUpper">Moje konto</button>
-                        <button className="navUpper">Zaloguj</button>
-                        <button className="navUpper">Mój koszyk</button>
-                </nav>
-
+           <div id="result">
                 {this.state.itemDetails && this.renderItemDetails()}
             </div>
             

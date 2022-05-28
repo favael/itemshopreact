@@ -1,4 +1,4 @@
-
+/* 
 .details img
 {
     width: 25vw;
@@ -40,19 +40,17 @@ font-size: 5vw;
 
 .details-content 
 {
-  display: inline-block;
+  display: block;
   background-color: darkgray;
-  
-
-}
+  }
 
 .description-details
 {
 
-  display: block;
+  position: fixed;
   float: left;
   margin-left: 2vw;
   
 }
 
-
+ */

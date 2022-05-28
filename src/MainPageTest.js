@@ -1,8 +1,9 @@
 import React from 'react';
 import './style/reset.css';
 import './style/MainPageTest.css';
-import { Row } from 'react-bootstrap';
+import {Row} from 'react-bootstrap';
 import {withRouter} from 'react-router-dom';
+import ItemDetails from './ItemDetails';
 
 
 
@@ -10,21 +11,29 @@ class MainPageTest extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { itemList: []}
+    this.state = { itemList: [], itemDetails: null}
 }
 
  
 
   componentDidMount() {
-    fetch('https://favael-webshop.herokuapp.com/book/szachy')
+    this.setState({itemDetails: null});
+    fetch('https://favael-webshop.herokuapp.com/book')
     .then(response => response.json())
     .then(bookResponse =>
       this.setState({itemList: bookResponse}))
   }
 
-
-
+  allFetch = () => {
+    this.setState({itemDetails: null});
+    fetch('https://favael-webshop.herokuapp.com/book')
+    .then(response => response.json())
+    .then(bookResponse =>
+      this.setState({itemList: bookResponse}))
+  }
+  
   chessFetch = () => {
+    this.setState({itemDetails: null});
     fetch('https://favael-webshop.herokuapp.com/book/szachy')
     .then(response => response.json())
     .then(bookResponse =>
@@ -32,6 +41,7 @@ class MainPageTest extends React.Component {
   }
 
   dramatFetch = () => {
+    this.setState({itemDetails: null});
     fetch('https://favael-webshop.herokuapp.com/book/dramat')
     .then(response => response.json())
     .then(dramatResponse =>
@@ -39,6 +49,7 @@ class MainPageTest extends React.Component {
   }
 
   historyFetch = () => {
+    this.setState({itemDetails: null});
     fetch('https://favael-webshop.herokuapp.com/book/historia')
     .then(response => response.json())
     .then(hitoryResponse =>
@@ -46,6 +57,7 @@ class MainPageTest extends React.Component {
   }
 
   cookFetch = () => {
+    this.setState({itemDetails: null});
     fetch('https://favael-webshop.herokuapp.com/book/gotowanie')
     .then(response => response.json())
     .then(cookResponse =>
@@ -53,6 +65,7 @@ class MainPageTest extends React.Component {
   }
 
   romansFetch = () => {
+    this.setState({itemDetails: null});
     fetch('https://favael-webshop.herokuapp.com/book/romans')
     .then(response => response.json())
     .then(romansResponse =>
@@ -60,44 +73,88 @@ class MainPageTest extends React.Component {
   }
 
   scfiFetch = () => {
+    this.setState({itemDetails: null});
     fetch('https://favael-webshop.herokuapp.com/book/scfi')
     .then(response => response.json())
     .then(scfiResponse =>
       this.setState({itemList: scfiResponse}))
   }
 
+  itemsDetailsFetch = (isbn) => {
+    
+    fetch(`https://favael-webshop.herokuapp.com/book/${isbn}`)
+        .then(response => response.json()
+        .then(jsonResponse => {
+            this.setState({itemDetails: jsonResponse})
+        })
+        )
+  }
+  
+
   onItemClick = (isbn) => {
-    this.props.history.push({pathname: `/book/${isbn}`});
+    this.setState({itemList:[]})
+    this.itemsDetailsFetch(isbn)
+        
+
+    // this.props.history.push({pathname: `/book/${isbn}`});
   }
 
   renderItemList = () => {
     return this.state.itemList.map((book) => {
       const {url, title, isbn} = book;
       const itemClick = this.onItemClick.bind(this, isbn)
-      return <figure className="col-3 col-sm-2" onClick = {itemClick} key={isbn}>
+      return <figure onClick = {itemClick} key={isbn}>
         <img src={url} alt={title}></img>
         <figcaption>{title}</figcaption>
       </figure>
     })
   }
 
+  renderItemDetails = () => {
+    const {url, title, description, author, quantity, prize} = this.state.itemDetails;
+
+    return (
+        <div className = "details-content">
+            <div className ="description-details">
+            
+                <h2>Tytuł: {title}</h2>
+                <p>Autor: {author}</p>
+                <p>Ilość: {quantity} szt.</p>
+                <p>Cena: {prize} zł</p>              
+            </div>
+            <div id ="detailsImage">
+                <img src = {"/" + url} alt={title}></img>
+            </div>
+              
+            
+
+
+            <div id= "description">{description}</div>
+            </div>
+       
+    )
+}
+
+
+
+
   render() {
 
     return (
       <div id="page">
-
+        <div id="upper">
         <nav className="navbar">
           <button className="navUpper">Moje konto</button>
           <button className="navUpper">Zaloguj</button>
           <button className="navUpper">Mój koszyk</button>
         </nav>
-
-        <header id = "header-background">
-          <div class = "logo"></div>
+        <header>
+          <div className = "logo"></div>
         </header>
         <nav className="navbar">
           {/* <a href="#home">Home</a>
                     <a href="#news">News</a> */}
+            <button className="navDown" onClick={this.allFetch} >Wszystkie</button>
 
             <button className="navDown" onClick={this.chessFetch} >Szachy</button>
 
@@ -112,14 +169,17 @@ class MainPageTest extends React.Component {
             <button className="navDown" onClick={this.scfiFetch}>Sci-Fi</button>
 
         </nav>
-        <section>
-          
-        <div className="container">
-        <Row>{this.renderItemList()}</Row>
-
-          
         </div>
-        </section>
+        <div id="results">
+        <div id='leftSideBar'></div>  
+        <div className="container">
+        <Row>{this.renderItemList()}</Row>        
+        <Row>{this.state.itemDetails && this.renderItemDetails()}</Row>
+            
+        </div>
+        <div id='righSideBar'></div> 
+        </div>
+        
         <footer>
 
         </footer>
