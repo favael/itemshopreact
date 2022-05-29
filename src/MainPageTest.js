@@ -101,11 +101,12 @@ class MainPageTest extends React.Component {
 
   renderItemList = () => {
     return this.state.itemList.map((book) => {
-      const {url, title, isbn} = book;
+      const {url, title, isbn, prize} = book;
       const itemClick = this.onItemClick.bind(this, isbn)
       return <figure onClick = {itemClick} key={isbn}>
         <img src={url} alt={title}></img>
         <figcaption>{title}</figcaption>
+        <figcaption>{prize}</figcaption>
       </figure>
     })
   }
