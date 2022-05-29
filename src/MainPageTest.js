@@ -106,7 +106,7 @@ class MainPageTest extends React.Component {
       return <figure onClick = {itemClick} key={isbn}>
         <img src={url} alt={title}></img>
         <figcaption>{title}</figcaption>
-              </figure>
+            </figure>
     })
   }
 
@@ -152,9 +152,7 @@ class MainPageTest extends React.Component {
           <div className = "logo"></div>
         </header>
         <nav className="navbar">
-          {/* <a href="#home">Home</a>
-                    <a href="#news">News</a> */}
-            <button className="navDown" onClick={this.allFetch} >Wszystkie</button>
+             <button className="navDown" onClick={this.allFetch} >Wszystkie</button>
 
             <button className="navDown" onClick={this.chessFetch} >Szachy</button>
 

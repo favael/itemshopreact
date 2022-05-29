@@ -50,11 +50,11 @@ figure img
   margin-top: 20px;
 }
 
-.container figure{
+#container figure{
 
 }
 
-.container figure:hover 
+#container figure:hover 
 {
   cursor: pointer;
   background-color:#333;
@@ -80,7 +80,7 @@ figure img
 
  
 
-  .container
+  #container
   { 
     min-height: 1000px;
   }  
@@ -106,8 +106,8 @@ figure img
 }
 
 figure {
-  width: 220px;
-  height:310px;
+  width: 20%;
+  height:20%;
  
 
 }
@@ -116,7 +116,7 @@ figure figcaption
 {
 	text-align:center;
 	color: #efefef;
-  font-size:20px;
+  font-size:1.5vh;
 }
 
 
@@ -154,4 +154,6 @@ figure figcaption
   font-size: 20px;
   text-align:justify;
 }
+
+
 
