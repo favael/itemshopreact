@@ -106,8 +106,7 @@ class MainPageTest extends React.Component {
       return <figure onClick = {itemClick} key={isbn}>
         <img src={url} alt={title}></img>
         <figcaption>{title}</figcaption>
-        <figcaption>{prize}</figcaption>
-      </figure>
+              </figure>
     })
   }
 
