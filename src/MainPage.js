@@ -159,15 +159,22 @@ onItemClick = (isbn) => {
   handleChange(event) {
     this.setState({value: event.target.value});
 
-    this.setState({itemList: []});
+
+    
     this.setState({basketList: []})
     this.setState({itemDetails: ""})
-    fetch(`https://favael-books-java.herokuapp.com/book/findAll${this.state.value}`)
+
+    const string = event.target.value
+    const stringSearched = string.replaceAll("\\.", "");
+    console.log(stringSearched)
+    if(stringSearched !=="") {
+    // fetch(`localhost:8080/book/findAll/${stringSearched}`)
+    fetch(`https://favael-books-java.herokuapp.com/book/findAll/A`)
     .then(response => response.json())
     .then(detailsResponse =>
       this.setState({itemList: detailsResponse}))
-  }
-  
+    }
+}
 
 
 
