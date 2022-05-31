@@ -202,7 +202,7 @@ renderBasketCard = () => {
         <Row><ol>{this.state.basketList && this.renderBasketCard()}</ol></Row>
 
         </div>
-      <div id="footer">. „Kiedy masz jakieś wątpliwości, idź do biblioteki”. &copy; Wszelkie prawa zastrzeżone.</div>
+      <div id="footer">„Kiedy masz jakieś wątpliwości, idź do biblioteki”. &copy; Wszelkie prawa zastrzeżone.</div>
       </div>
       
     )
