@@ -99,7 +99,7 @@ class MainPage extends React.Component {
       
   };
 
-      fetch(`https://favael-books-java.herokuapp.com/shoppingCardList/` + isbn , requestOptions)
+      fetch(`http://localhost:8080/book/shoppingCardList/${isbn}` , requestOptions)
       .then(response => response.json()
       .then(jsonResponse => {
           this.setState({
