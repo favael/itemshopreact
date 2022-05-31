@@ -158,6 +158,32 @@ figure img:hover
   
 }
 
+#backetList
+{
+  width: 1000px;
+  margin-left: 50px;
+  font-size: 30px;
+  text-align: left;
+}
+
+#title
+{
+  float: left;
+}
+
+#quantity
+{
+  float: left;
+}
+
+#prize
+{
+  float: right;
+  margin-right: 0;
+}
+
+
+
 
 
 
