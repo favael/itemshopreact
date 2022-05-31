@@ -4,7 +4,7 @@ import './style/reset.css';
 import './style/index.css';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import MainPageTest from "./MainPageTest"
+import MainPage from "./MainPage"
 import ItemDetails from './ItemDetails';
 import {BrowserRouter, Route} from 'react-router-dom'
 import AddItem from './AddItem';
@@ -16,7 +16,7 @@ ReactDOM.render(
   <BrowserRouter>
 
 
-    <Route exact path ='/' component = {MainPageTest}/>
+    <Route exact path ='/' component = {MainPage}/>
     <Route path ='/book/:isbn' component = {ItemDetails}/>
   
   </BrowserRouter>,
