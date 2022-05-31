@@ -89,6 +89,17 @@ class MainPage extends React.Component {
         })
         )
   }
+
+  shoppingCardFetch = () => {
+    this.setState({itemList:[]})
+    fetch(`http://localhost:8080/book/shoppingCardList`)
+        .then(response => response.json()
+        .then(jsonResponse => {
+            this.setState({basketList: jsonResponse})
+        })
+        )
+  }
+
   
   onAddToBasketClick = (isbn) => {
     
@@ -100,13 +111,7 @@ class MainPage extends React.Component {
   };
 
       fetch(`http://localhost:8080/book/shoppingCardList/${isbn}` , requestOptions)
-      .then(response => response.json()
-      .then(jsonResponse => {
-          this.setState({
-              itemDetails: jsonResponse
-          })
-      })
-      )
+      .then(response => response.json())
   }
 
 
@@ -152,6 +157,34 @@ class MainPage extends React.Component {
     )
 }
 
+renderBasketCard = () => {
+  const {url, title, description, author, quantity, prize} = this.state.itemDetails;
+
+  return (
+      <div className = "details-content">
+          <div className ="description-details">
+          
+              <h2>Tytuł: {title}</h2>
+              <p>Autor: {author}</p>
+              <p>Ilość: {quantity} szt.</p>
+              <p>Cena: {prize} zł</p>              
+          </div>
+          <div id ="detailsImage">
+              <img src = {"/" + url} alt={title}></img>
+          </div>
+            
+          
+
+
+          <div id= "description">{description}</div>
+          </div>
+  )
+}
+
+
+
+
+
 
 
   render() {
@@ -176,12 +209,14 @@ class MainPage extends React.Component {
         <div className="option" onClick={this.cookFetch} >Gotowanie</div>
         <div className="option" onClick={this.romansFetch} >Romans</div>
         <div className="option" onClick={this.scfiFetch} >Sci-Fi</div>
-        <div id="shopping-cart"><img src={'./shopping cart.jpeg'} width="50px"></img></div>
+        <div id="shopping-cart"><img src={'./shopping cart.jpeg'} width="50px" onClick={this.shoppingCardFetch}></img></div>
         <div className="reset-float-left"></div>
       </div>  
       <div id="content">
         <Row>{this.renderItemList()}</Row>        
         <Row>{this.state.itemDetails && this.renderItemDetails()}</Row>
+        <Row>{this.state.itemDetails && this.renderBasketCard()}</Row>
+
         </div>
       <div id="footer">. „Kiedy masz jakieś wątpliwości, idź do biblioteki”. &copy; Wszelkie prawa zastrzeżone.</div>
       </div>
