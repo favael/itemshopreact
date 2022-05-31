@@ -11,7 +11,9 @@ class MainPage extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {itemList: [], itemDetails: "", basketList:[]}
+    this.state = {itemList: [], itemDetails: "", basketList:[], value:""}
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
 }
 
  
@@ -130,7 +132,7 @@ onItemClick = (isbn) => {
      
   }
 
-  
+
   onAddToBasketClick = (isbn) => {
     const requestOptions = {
       method: 'POST',
@@ -145,6 +147,30 @@ onItemClick = (isbn) => {
        this.setState({itemList: []})
        this.itemsDetailsFetch(isbn)
   }
+
+  
+  handleSubmit(event) {
+    alert('Podano następujące imię: ' + this.state.value);
+    event.preventDefault();
+  }
+  
+  
+  
+  handleChange(event) {
+    this.setState({value: event.target.value});
+
+    this.setState({itemList: []});
+    this.setState({basketList: []})
+    this.setState({itemDetails: ""})
+    fetch(`https://favael-books-java.herokuapp.com/book/findAll${this.state.value}`)
+    .then(response => response.json())
+    .then(detailsResponse =>
+      this.setState({itemList: detailsResponse}))
+  }
+  
+
+
+
 
   renderItemList = () => {
     return this.state.itemList.map((book) => {
@@ -216,7 +242,8 @@ renderBasketCard = () => {
       <div id="topbarR"><h1>„Pokój bez książek jest jak ciało bez duszy.”</h1></div>
       <div className="reset-float-left"></div>
 
-      <div id ="search"><input placeholder="Tu wpisz tytuł, autora, nazwę serii.."></input></div>
+      <div id ="search"><form onSubmit={this.handleSubmit}><input type="text" value={this.state.value} onChange={this.handleChange} placeholder="Tu wpisz tytuł, autora, nazwę serii.." ></input></form></div>
+      
       
 
       <div id="menu">
@@ -231,9 +258,11 @@ renderBasketCard = () => {
         <div className="reset-float-left"></div>
       </div>  
       <div id="content">
+      
         <Row>{this.state.itemList && this.renderItemList()}</Row>        
         <Row>{this.state.itemDetails && this.renderItemDetails()}</Row>
         <Row><ol>{this.state.basketList && this.renderBasketCard()}</ol></Row>
+        
 
         </div>
       <div id="footer">„Kiedy masz jakieś wątpliwości, idź do biblioteki”. &copy; Wszelkie prawa zastrzeżone.</div>
