@@ -165,23 +165,35 @@ figure img:hover
   margin-left: 50px;
   font-size: 30px;
   text-align: left;
+  border-bottom: 2px dotted black;
 }
 
 #title
 {
   float: left;
+  width: 85%;
+  
 }
 
-#quantity
-{
-  float: left;
-}
 
 #prize
 {
-  float: right;
-  margin-right: 0;
+  float: left;
+  width: 10%;
 }
+
+#delete
+{
+  width: 50px;
+  float: left;
+  
+}
+#delete img
+{
+   width: 25px;
+   height: 25px;
+}
+
 
 #description-details
 {
@@ -199,9 +211,6 @@ height: 400px;
   width: 80%;
   height: 95%;
   margin-top: 30px;
-  
-  
-  
 }
 
 
@@ -230,8 +239,8 @@ height: 400px;
   cursor: pointer;
   background-color: rgb(231, 98, 41);
   transform: scale(1.2);
-  
 }
+
 
 
 

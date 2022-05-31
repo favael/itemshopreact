@@ -177,7 +177,7 @@ onItemClick = (isbn) => {
                 <div id="addToBasketDetails" onClick = {addToBasket}>Do koszyka</div>
                 
             </div>
-            
+
             <div id= "description">{description}</div>
                 
             </div>
@@ -191,7 +191,10 @@ renderBasketCard = () => {
     return (   
                 <li id="backetList">
                     <div id="title">{title}</div>
-                    <div id="prize">{prize}</div>   
+                    <div id="prize">{prize}</div>
+                    <div id="delete"> <img src={'./delete.jpeg'} width="30px" alt="Błąd ładowania grafiki"></img></div>  
+                    
+                     
                     <div className="reset-float-left"></div>   
                 </li>
                 
