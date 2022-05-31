@@ -113,7 +113,7 @@ class MainPage extends React.Component {
 
   };
 
-      fetch(`https://favael-book.herokuapp.com/book/shoppingCardList/${isbn}` , requestOptions)
+      fetch(`https://favael-books-java.herokuapp.com/book/shoppingCardList/${isbn}` , requestOptions)
   }
   onItemClick = (isbn) => {
        this.setState({itemList: []})
