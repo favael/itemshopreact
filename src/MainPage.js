@@ -129,7 +129,7 @@ onItemClick = (isbn) => {
       fetch(`https://favael-books-java.herokuapp.com/book/shoppingCardList/${isbn}` , requestOptions)
 
       const element = document.getElementById("#shopping-cart");
-      element.style.width=70;
+      element.style.width="70px";
   }
 
 
