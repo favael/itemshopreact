@@ -23,7 +23,22 @@ class MainPage extends React.Component {
     .then(response => response.json())
     .then(bookResponse =>
       this.setState({itemList: bookResponse}))
-  }
+  
+
+  const requestOptions = {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json' },
+
+};
+
+    fetch(`https://favael-books-java.herokuapp.com/book/shoppingCardList/` , requestOptions)
+}
+
+onItemClick = (isbn) => {
+     this.setState({itemList: []})
+     this.itemsDetailsFetch(isbn)
+}
+
 
   allFetch = () => {
     this.setState({itemList: []})
