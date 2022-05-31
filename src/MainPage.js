@@ -43,6 +43,7 @@ onItemClick = (isbn) => {
   allFetch = () => {
     this.setState({itemList: []})
     this.setState({basketList: []})
+    this.setState({itemDetails: ""})
      fetch('https://favael-books-java.herokuapp.com/book')
     .then(response => response.json())
     .then(bookResponse =>
@@ -52,6 +53,7 @@ onItemClick = (isbn) => {
   chessFetch = () => {
     this.setState({itemList: []})
     this.setState({basketList: []})
+    this.setState({itemDetails: ""})
     fetch('https://favael-books-java.herokuapp.com/book/szachy')
     .then(response => response.json())
     .then(bookResponse =>
@@ -61,6 +63,7 @@ onItemClick = (isbn) => {
   dramatFetch = () => {
     this.setState({itemList: []});
     this.setState({basketList: []})
+    this.setState({itemDetails: ""})
     fetch('https://favael-books-java.herokuapp.com/book/dramat')
     .then(response => response.json())
     .then(dramatResponse =>
@@ -70,6 +73,7 @@ onItemClick = (isbn) => {
   historyFetch = () => {
     this.setState({itemList: []});
     this.setState({basketList: []})
+    this.setState({itemDetails: ""})
     fetch('https://favael-books-java.herokuapp.com/book/historia')
     .then(response => response.json())
     .then(hitoryResponse =>
@@ -79,6 +83,7 @@ onItemClick = (isbn) => {
   cookFetch = () => {
     this.setState({itemList: []});
     this.setState({basketList: []})
+    this.setState({itemDetails: ""})
     fetch('https://favael-books-java.herokuapp.com/book/gotowanie')
     .then(response => response.json())
     .then(cookResponse =>
@@ -88,6 +93,7 @@ onItemClick = (isbn) => {
   romansFetch = () => {
     this.setState({itemList: []});
     this.setState({basketList: []})
+    this.setState({itemDetails: ""})
     fetch('https://favael-books-java.herokuapp.com/book/romans')
     .then(response => response.json())
     .then(romansResponse =>
@@ -97,6 +103,7 @@ onItemClick = (isbn) => {
   scfiFetch = () => { 
     this.setState({itemList: []});
     this.setState({basketList: []})
+    this.setState({itemDetails: ""})
     fetch('https://favael-books-java.herokuapp.com/book/scfi')
     .then(response => response.json())
     .then(scfiResponse =>
@@ -106,13 +113,16 @@ onItemClick = (isbn) => {
   itemsDetailsFetch = (isbn) => {
     this.setState({itemList: []});
     this.setState({basketList: []})
+    this.setState({itemDetails: ""})
     fetch(`https://favael-books-java.herokuapp.com/book/${isbn}`)
-        .then(response => response.json()
-                )
+    .then(response => response.json())
+    .then(detailsResponse =>
+      this.setState({itemDetails: detailsResponse}))
   }
 
   shoppingCardListFetch = () => {
     this.setState({itemList: []})
+    this.setState({itemDetails: ""})
     fetch(`https://favael-books-java.herokuapp.com/book/shoppingCardList`)
     .then(response => response.json())
     .then(shoppingresponse =>
@@ -150,8 +160,8 @@ onItemClick = (isbn) => {
   }
 
   renderItemDetails = () => {
-    const {url, title, description, author, quantity, prize} = this.state.itemDetails;
-    
+    const {url, title, description, author, quantity, prize,isbn} = this.state.itemDetails;
+    const addToBasket = this.onAddToBasketClick.bind(this, isbn)
     return (
         <div className = "details-content">
             <div className ="description-details">
@@ -161,10 +171,15 @@ onItemClick = (isbn) => {
                 <p>Ilość: {quantity} szt.</p>
                 <p>Cena: {prize} zł</p>              
             </div>
-            <div id ="detailsImage">
+            
+            <div id ="detailsImage" >
                 <img src = {"/" + url} alt={title}></img>
+                <div id="addToBasketDetails" onClick = {addToBasket}>Do koszyka</div>
+                
             </div>
-                <div id= "description">{description}</div>
+            
+            <div id= "description">{description}</div>
+                
             </div>
     )
 }
