@@ -91,14 +91,14 @@ class MainPage extends React.Component {
   itemsDetailsFetch = (isbn) => {
     this.setState({itemList: []});
     this.setState({basketList: []})
-    fetch(`https://favael-book.herokuapp.com/book/${isbn}`)
+    fetch(`https://favael-books-java.herokuapp.com/book/${isbn}`)
         .then(response => response.json()
                 )
   }
 
   shoppingCardListFetch = () => {
     this.setState({itemList: []})
-    fetch(`https://favael-book.herokuapp.com/book/shoppingCardList/`)
+    fetch(`https://favael-books-java.herokuapp.com/book/shoppingCardList`)
     .then(response => response.json())
     .then(shoppingresponse =>
       this.setState({basketList: shoppingresponse}))  
