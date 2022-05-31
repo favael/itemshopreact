@@ -127,9 +127,6 @@ onItemClick = (isbn) => {
       headers: { 'Content-Type': 'application/json' },
   };
       fetch(`https://favael-books-java.herokuapp.com/book/shoppingCardList/${isbn}` , requestOptions)
-
-      const element = document.getElementById("#shopping-cart");
-      element.style.width="70px";
   }
 
 
